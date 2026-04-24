@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lv.♡Charm 紹介サイト</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Yu Gothic", sans-serif;
+      background: linear-gradient(135deg, #fff0f7, #ffe3f1);
+      color: #333;
+      line-height: 1.8;
+    }
+
+    header {
+      padding: 100px 20px;
+      text-align: center;
+      color: white;
+      background:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("images/header.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    header p {
+      font-weight: bold;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+    }
+
+    nav {
+      background: rgba(255,255,255,0.95);
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+
+    nav a {
+      margin: 5px;
+      text-decoration: none;
+      color: #ff4fa3;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .box {
+      background: white;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #ff4fa3;
+      margin-top: 0;
+    }
+
+    .video-card {
+      display: block;
+      margin-top: 12px;
+      text-decoration: none;
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      color: #333;
+    }
+
+    .video-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .video-card span {
+      display: block;
+      padding: 12px;
+      font-weight: bold;
+      color: #ff4fa3;
+    }
+
+    .stack-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .col {
+      background: #fff5fa;
+      padding: 16px;
+      border-radius: 14px;
+    }
+
+    .song-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .song-card {
+      background: #fff8fc;
+      border: 1px solid #ffd6ea;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transition: 0.2s;
+    }
+
+    .song-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+    }
+
+    .song-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .song-content {
+      padding: 15px;
+    }
+
+    .song-card h3 {
+      margin: 0 0 8px;
+      color: #ff4fa3;
+    }
+
+    .song-card p {
+      margin: 0 0 12px;
+    }
+
+    .song-card a {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #ff4fa3;
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: bold;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .member-card {
+      border: none;
+      cursor: pointer;
+      background: #fff8fc;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transition: 0.2s;
+      font-family: inherit;
+      padding: 0;
+    }
+
+    .member-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+    }
+
+    .member-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .member-name {
+      padding: 12px 12px 6px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .member-color {
+      padding: 0 12px 14px;
+      text-align: center;
+      color: #666;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 999;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+    }
+
+    .popup-card {
+      width: min(520px, 100%);
+      background: white;
+      border-radius: 22px;
+      padding: 22px;
+      position: relative;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      border: none;
+      background: #fff0f7;
+      color: #ff4fa3;
+      border-radius: 999px;
+      width: 36px;
+      height: 36px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .popup-top {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+    }
+
+    .popup-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    .popup-card h3 {
+      margin: 0 0 8px;
+      color: #ff4fa3;
+      font-size: 1.5rem;
+    }
+
+    .popup-highlight {
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      background: #fff5fa;
+    }
+
+    .popup-sns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .popup-sns a {
+      padding: 10px 14px;
+      background: #ff4fa3;
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 0.94rem;
+    }
+
+    details.setlist-item {
+      background: #fff8fc;
+      border: 1px solid #ffd6ea;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-top: 14px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #ff4fa3;
+    }
+
+    .schedule-list li {
+      margin-bottom: 12px;
+      padding: 10px;
+      background: #fff5fa;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding: 70px 15px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 4px;
+        font-size: 0.9rem;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .popup-top {
+        grid-template-columns: 1fr;
+      }
+
+      .popup-photo {
+        width: 70%;
+        margin: auto;
+        display: block;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .members-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Lv.♡Charm</h1>
+  <p>可愛いを諦めない、可愛いは進化し続ける9人組アイドルグループ</p>
+</header>
+
+<nav>
+  <a href="#intro">魅力</a>
+  <a href="#songs">曲紹介</a>
+  <a href="#members">メンバー</a>
+  <a href="#setlist">セトリ</a>
+  <a href="#live">ライブ予定</a>
+</nav>
+
+<div class="container">
+
+  <div class="box" id="intro">
+    <h2>Lv.♡Charmの魅力</h2>
+    <p>
+      じんとまあたそが手掛ける、本気のアイドル育成プロジェクト<strong>Produce♡Quest</strong>の中から選ばれた個性あふれる9人組アイドルグループ。<br><br>
+      可愛いを諦めない、アイドルになる夢を諦めない、輝いてファンを幸せにしたいなどメンバーそれぞれの強い想いを感じられて、成長の物語を一番近くで見届けられる。<br><br>
+      <strong style="font-size:1.1em; color:#ff4fa3;">涙あり、笑いあり、そして感動あり。</strong><br>
+      気づいたら君も虜に...
+    </p>
+
+    <div class="stack-cards">
+      <div class="col">
+        <h3>まずはここから！</h3>
+        <p>
+          メンバーや候補生一人一人の成長や「アイドルになりたい」という人生をかけた物語が見れる<strong>Produce♡Quest</strong>から見るのがおすすめ。
+        </p>
+        <a class="video-card" href="https://www.youtube.com/watch?v=3GaDCFlKlTI&list=PLRLNFLKJm3Ok9mOWegeszV3JkN_4pMQPj&pp=0gcJCbcEOCosWNin" target="_blank">
+          <img src="https://img.youtube.com/vi/3GaDCFlKlTI/hqdefault.jpg" alt="Produce♡Quest">
+          <span><strong>Produce♡Quest</strong> 再生リストを見る</span>
+        </a>
+      </div>
+
+      <div class="col">
+        <h3>ハマるルート</h3>
+        <p>
+          <strong>Produce♡Quest → 推しメン → Lv.♡CharmのYouTubeチャンネルの順</strong>で追うと、世界観が一気に見えて楽しい！
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" id="songs">
+    <h2>曲紹介</h2>
+
+    <div class="song-grid">
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/Bv--0FY6x4I/hqdefault.jpg" alt="ガチらぶ注意報!!">
+        <div class="song-content">
+          <h3>ガチらぶ注意報!!</h3>
+          <p>ガチ恋を自覚させにくる、爆レス系ハッピーなデビュー曲<br>
+          コール＆レスが大前提のみんなで一緒にガチ恋へ♪</p>
+          <a href="https://youtu.be/Bv--0FY6x4I?si=a6NgKDyUzcz7zoSI" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/qeBn-UV_1gA/hqdefault.jpg" alt="ブランニュークエスト">
+        <div class="song-content">
+          <h3>ブランニュークエスト</h3>
+          <p>エモい全振りの「楽しかったな...」の余韻が強い曲<br>
+          ライブという名の物語を締めるのにぴったり</p>
+          <a href="https://youtu.be/qeBn-UV_1gA?si=2rf-6loySsfsRUk9" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/hDTvySKnvRA/hqdefault.jpg" alt="キミをパシャ♡">
+        <div class="song-content">
+          <h3>キミをパシャ♡</h3>
+          <p>ファンサ全開のレス祭り！！<br>
+          この曲のレスをもらうために最前で推しにパシャられたくなる</p>
+          <a href="https://youtu.be/hDTvySKnvRA?si=Y-i7kXM6BPZQqY4q" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/vKEVin11uTU/hqdefault.jpg" alt="可愛さ∞レベルUP!">
+        <div class="song-content">
+          <h3>可愛さ∞レベルUP!</h3>
+          <p>入りのワンフレーズで超楽しくなるのに、<br>
+          ずっと可愛いが上がり続けてもう、沼！</p>
+          <a href="https://youtu.be/vKEVin11uTU?si=5FsgE08MBKu7MCfp" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/-68zlSUojj4/hqdefault.jpg" alt="タイムリープ">
+        <div class="song-content">
+          <h3>タイムリープ</h3>
+          <p>切なエモい物語曲<br>
+          時間を繰り返してでも想いを伝えたいことってあるよね。</p>
+          <a href="https://youtu.be/-68zlSUojj4?si=owxbjLeC9r5PejcF" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/D15L9PtVQn8/hqdefault.jpg" alt="ヒロインフラグ宣言!">
+        <div class="song-content">
+          <h3>ヒロインフラグ宣言!</h3>
+          <p>可愛い曲に見えて、ダンスのキレが激しい曲<br>
+          歌詞も相まって推してよかった！ってなる主イチオシ曲</p>
+          <a href="https://youtu.be/D15L9PtVQn8?si=WigVjcBa1ExbPIBM" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+      <div class="song-card">
+        <img class="song-thumb" src="https://img.youtube.com/vi/KOhtZdVcRyI/hqdefault.jpg" alt="笑顔と本気と夢＝No.1!">
+        <div class="song-content">
+          <h3>笑顔と本気と夢＝No.1!</h3>
+          <p>応援したくなる理由が全部詰まってる応援曲<br>
+          コール・手振り・クラップ現場の一体感が強いよ！</p>
+          <a href="https://youtu.be/KOhtZdVcRyI?si=GbaeAYkR4rIr-TjY" target="_blank">▶ 動画を見る</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="box" id="members">
+    <h2>メンバーの魅力紹介</h2>
+    <p>写真を押すと、その場でプロフィールやSNSリンクを見られます。</p>
+
+    <div class="members-grid">
+      <button class="member-card" onclick="openMember('aimi')"><img class="member-photo" src="images/aimi.jpg"><div class="member-name">犬塚藍美</div><div class="member-color">水色</div></button>
+      <button class="member-card" onclick="openMember('rana')"><img class="member-photo" src="images/rana.jpg"><div class="member-name">岩瀬蘭奈</div><div class="member-color">紫色</div></button>
+      <button class="member-card" onclick="openMember('mimi')"><img class="member-photo" src="images/mimi.jpg"><div class="member-name">植木美々</div><div class="member-color">ミントグリーン</div></button>
+      <button class="member-card" onclick="openMember('karen')"><img class="member-photo" src="images/karen.jpg"><div class="member-name">大坪楓恋</div><div class="member-color">赤色</div></button>
+      <button class="member-card" onclick="openMember('mao')"><img class="member-photo" src="images/mao.jpg"><div class="member-name">斉藤まお</div><div class="member-color">青色</div></button>
+      <button class="member-card" onclick="openMember('miyuu')"><img class="member-photo" src="images/miyuu.jpg"><div class="member-name">佐藤美優</div><div class="member-color">黄色</div></button>
+      <button class="member-card" onclick="openMember('nicoa')"><img class="member-photo" src="images/nicoa.jpg"><div class="member-name">古瀬にこあ</div><div class="member-color">ベビーピンク</div></button>
+      <button class="member-card" onclick="openMember('miyabi')"><img class="member-photo" src="images/miyabi.jpg"><div class="member-name">山本雅</div><div class="member-color">白色</div></button>
+      <button class="member-card" onclick="openMember('choko')"><img class="member-photo" src="images/choko.jpg"><div class="member-name">吉田ちょこ</div><div class="member-color">ビビットピンク</div></button>
+    </div>
+  </div>
+
+  <div class="box" id="setlist">
+    <h2>これまでのライブセトリ</h2>
+    <details class="setlist-item">
+      <summary>2026/4/10｜Lv.♡Charm デビューライブ</summary>
+      <ol>
+        <li>SE</li>
+        <li>ガチらぶ注意報!!</li>
+        <li>キミをパシャ♡</li>
+        <li>MC（自己紹介 → 君パシャタイム）</li>
+        <li>ヒロインフラグ宣言！</li>
+        <li>タイムリープ</li>
+        <li>MC（ラスト1曲宣言）</li>
+        <li>可愛さ∞レベルUP！</li>
+        <li>MC（記念撮影 → TikTok撮影）</li>
+        <li>アンコール</li>
+        <li>笑顔と本気と夢＝No1!</li>
+        <li>MC（一人一人の想い → 公式ブログの制作発表 → 重大発表）</li>
+        <li>ブランニュークエスト</li>
+        <li>EN（P2人からメンバーへ花束 → 記念撮影）</li>
+      </ol>
+    </details>
+  </div>
+
+  <div class="box" id="live">
+    <h2>今後のライブ予定</h2>
+    <ul class="schedule-list">
+      <li><strong>4/25</strong> WEGO × Lv.♡Charm コラボイベント　＠WEGO</li>
+      <li><strong>5/2</strong> はらぺこサーカス2026　＠花博記念公園 鶴見緑地 大芝生</li>
+      <li><strong>5/3</strong> IDOL SUMMER JUNGLE GOLDEN　＠お台場R地区</li>
+      <li><strong>5/10</strong> デビューライブ完売御礼記念スペシャルライブ　＠五反田G7</li>
+      <li><strong>5/24</strong> フリーライブ　＠有明ガーデン 3Fみんなのテラス</li>
+      <li><strong>7/3</strong> 1st Tour ~LOGIN SUMMER~《大阪》　＠バナナホール</li>
+      <li><strong>7/10</strong> 1st Tour ~LOGIN SUMMER~《福岡》　＠福岡Beat Station</li>
+      <li><strong>7/24</strong> 1st Tour ~LOGIN SUMMER~《東京》　＠新宿ReNY</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="popup-overlay" id="memberPopup" onclick="closeMember(event)">
+  <div class="popup-card" onclick="event.stopPropagation()">
+    <button class="popup-close" onclick="closeMember()">×</button>
+    <div class="popup-top">
+      <img class="popup-photo" id="popupPhoto">
+      <div>
+        <h3 id="popupName"></h3>
+        <div id="popupMeta"></div>
+        <div class="popup-highlight" id="popupHighlight"></div>
+        <div class="popup-sns" id="popupSns"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const members = {
+  aimi: {
+    name: "犬塚藍美",
+    color: "水色",
+    birthday: "2008-02-04",
+    hometown: "石川県",
+    skill: "円周率100桁暗記",
+    photo: "images/aimi.jpg",
+    highlight: "誰よりもまっすぐな可愛さで好きにさせる、最年少王道アイドル",
+    x: "https://x.com/lvcharmaimi?s=20",
+    instagram: "https://www.instagram.com/lvcharmaimi?igsh=d205MjRtOHRrdGRh",
+    tiktok: "https://www.tiktok.com/@lvcharmaimi?_r=1&_t=ZS-95kIlwrAwJG"
+  },
+  rana: {
+    name: "岩瀬蘭奈",
+    color: "紫色",
+    birthday: "2004-08-01",
+    hometown: "大阪府",
+    skill: "まつ毛に爪楊枝を乗せる",
+    photo: "images/rana.jpg",
+    highlight: "気づいたら惚れてまう、女前すぎる熱いホスト",
+    x: "https://x.com/lvcharmrana?s=20",
+    instagram: "https://www.instagram.com/lvcharmrana?igsh=MTlsbGJkbHhrdG1qNw==",
+    tiktok: "https://www.tiktok.com/@lvcharmrana?_r=1&_t=ZS-95kInj8w1iC"
+  },
+  mimi: {
+    name: "植木美々",
+    color: "ミントグリーン",
+    birthday: "2007-10-28",
+    hometown: "神奈川県",
+    skill: "ひとりクレヨンしんちゃん",
+    photo: "images/mimi.jpg",
+    highlight: "一瞬で\"可愛い\"を完成させる、ヒロイン系あざと天才",
+    x: "https://x.com/lvcharmmimi?s=20",
+    instagram: "https://www.instagram.com/lvcharmmimi?igsh=MWttb29kYmZoZzI5Yg==",
+    tiktok: "https://www.tiktok.com/@lvcharmmimi?_r=1&_t=ZS-95kIpncgQ3s"
+  },
+  karen: {
+    name: "大坪楓恋",
+    color: "赤色",
+    birthday: "2004-11-05",
+    hometown: "福岡県",
+    skill: "韓国語",
+    photo: "images/karen.jpg",
+    highlight: "どこか手が届かないのに惹かれる、気づいたらガチ恋の沼に...ようこそ。",
+    x: "https://x.com/lvcharmkaren?s=20",
+    instagram: "https://www.instagram.com/lvcharmkaren?igsh=bHlseWc2OGJ6c2Y1",
+    tiktok: "https://www.tiktok.com/@lvcharmkaren?_r=1&_t=ZS-95kIpMb6LVI"
+  },
+  mao: {
+    name: "斉藤まお",
+    color: "青色",
+    birthday: "2006-06-10",
+    hometown: "大阪府",
+    skill: "絶叫マシン",
+    photo: "images/mao.jpg",
+    highlight: "小さな体からは想像できない歌声で惹き込む最強ボーカル",
+    x: "https://x.com/lvcharmmao?s=20",
+    instagram: "https://www.instagram.com/lvcharmmao?igsh=MWE2Y3l3dmpjZno5dA==",
+    tiktok: "https://www.tiktok.com/@lvcharmmao?_r=1&_t=ZS-95kIsmnvoQi"
+  },
+  miyuu: {
+    name: "佐藤美優",
+    color: "黄色",
+    birthday: "2003-12-24",
+    hometown: "青森県",
+    skill: "元気なファンサ",
+    photo: "images/miyuu.jpg",
+    highlight: "圧倒的なエネルギーで空気を支配する、みんなの太陽",
+    x: "https://x.com/lvcharmmiyuu?s=20",
+    instagram: "https://www.instagram.com/lvcharmmiyuu?igsh=MXgyamxybnFkajgzcQ==",
+    tiktok: "https://www.tiktok.com/@lvcharmmiyuu?_r=1&_t=ZS-95kIuRBB5Os"
+  },
+  nicoa: {
+    name: "古瀬にこあ",
+    color: "ベビーピンク",
+    birthday: "2005-07-01",
+    hometown: "富山県",
+    skill: "犬猫に好かれる",
+    photo: "images/nicoa.jpg",
+    highlight: "八重歯×にこにこ笑顔で一撃！気づいたら目が離せない...",
+    x: "https://x.com/lvcharmnicoa?s=20",
+    instagram: "https://www.instagram.com/lvcharmnicoa?igsh=MTZ6a3YzcTNuajZ4cw==",
+    tiktok: "https://www.tiktok.com/@lvcharmnicoa?_r=1&_t=ZS-95kIwnPi2h6"
+  },
+  miyabi: {
+    name: "山本雅",
+    color: "白色",
+    birthday: "2004-10-28",
+    hometown: "東京都",
+    skill: "食べること",
+    photo: "images/miyabi.jpg",
+    highlight: "唯一無二のビジュアルと自分の世界観を持つ孤高のお姫様",
+    x: "https://x.com/lvcharmmiyabi?s=20",
+    instagram: "https://www.instagram.com/lvcharmmiyabi?igsh=MW1jbXNwam8zaTh2Ng==",
+    tiktok: "https://www.tiktok.com/@lvcharmmiyabi?_r=1&_t=ZS-95kIy05e0CG"
+  },
+  choko: {
+    name: "吉田ちょこ",
+    color: "ビビットピンク",
+    birthday: "2004-02-09",
+    hometown: "大阪府",
+    skill: "人たらし♡",
+    photo: "images/choko.jpg",
+    highlight: "表情の振れ幅がエグい、気づいたら守りたくなる\"沼系あざと天然\"",
+    x: "https://x.com/lvcharmchoko?s=20",
+    instagram: "https://www.instagram.com/lvcharmchoko?igsh=MTFneGRua3lqeHU0NA==",
+    tiktok: "https://www.tiktok.com/@lvcharmchoko?_r=1&_t=ZS-95kIyT4zr20"
+  }
+};
+
+function openMember(id) {
+  const m = members[id];
+
+  document.getElementById("popupPhoto").src = m.photo;
+  document.getElementById("popupName").textContent = m.name;
+
+  document.getElementById("popupMeta").innerHTML = `
+    <strong>メンバーカラー：</strong>${m.color}<br>
+    <strong>生年月日：</strong>${m.birthday}<br>
+    <strong>出身：</strong>${m.hometown}<br>
+    <strong>特技：</strong>${m.skill}
+  `;
+
+  document.getElementById("popupHighlight").innerHTML = `<strong>見どころ：</strong>${m.highlight}`;
+
+  document.getElementById("popupSns").innerHTML = `
+    <a href="${m.x}" target="_blank">X</a>
+    <a href="${m.instagram}" target="_blank">Instagram</a>
+    <a href="${m.tiktok}" target="_blank">TikTok</a>
+  `;
+
+  document.getElementById("memberPopup").classList.add("active");
+}
+
+function closeMember(event) {
+  if (event) event.stopPropagation();
+  document.getElementById("memberPopup").classList.remove("active");
+}
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") closeMember();
+});
+</script>
+
+</body>
+</html>
