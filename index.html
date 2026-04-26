@@ -148,14 +148,29 @@
       margin: 0 0 12px;
     }
 
-    .song-card a {
+    .song-card a,
+    .timetree-button {
       display: inline-block;
-      padding: 8px 14px;
-      background: #ff4fa3;
+      padding: 9px 15px;
+      background: linear-gradient(135deg, #ff4fa3, #ff87c6);
       color: white;
       text-decoration: none;
       border-radius: 999px;
       font-weight: bold;
+      box-shadow: 0 6px 16px rgba(255,79,163,0.25);
+      transition: 0.2s;
+    }
+
+    .song-card a:hover,
+    .timetree-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(255,79,163,0.32);
+    }
+
+    .timetree-note {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 8px;
     }
 
     .members-grid {
@@ -312,18 +327,46 @@
         font-size: 2.2rem;
       }
 
+      header p {
+        font-size: 0.95rem;
+      }
+
+      nav {
+        padding: 8px;
+      }
+
       nav a {
         display: inline-block;
         margin: 4px;
+        padding: 5px 8px;
         font-size: 0.9rem;
+        background: #fff5fa;
+        border-radius: 999px;
       }
 
       .container {
         padding: 15px;
       }
 
+      .box {
+        padding: 15px;
+      }
+
       .members-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .popup-overlay {
+        padding: 12px;
+        align-items: flex-end;
+      }
+
+      .popup-card {
+        width: 100%;
+        max-height: 88vh;
+        overflow-y: auto;
+        border-radius: 22px 22px 0 0;
+        padding: 18px;
       }
 
       .popup-top {
@@ -332,8 +375,23 @@
 
       .popup-photo {
         width: 70%;
+        max-width: 260px;
         margin: auto;
         display: block;
+      }
+
+      .popup-card h3 {
+        text-align: center;
+      }
+
+      .popup-sns a {
+        flex: 1;
+        text-align: center;
+      }
+
+      .schedule-list {
+        padding-left: 0;
+        list-style: none;
       }
     }
 
@@ -400,13 +458,11 @@
     <h2>曲紹介</h2>
 
     <div class="song-grid">
-
       <div class="song-card">
         <img class="song-thumb" src="https://img.youtube.com/vi/Bv--0FY6x4I/hqdefault.jpg" alt="ガチらぶ注意報!!">
         <div class="song-content">
           <h3>ガチらぶ注意報!!</h3>
-          <p>ガチ恋を自覚させにくる、爆レス系ハッピーなデビュー曲<br>
-          コール＆レスが大前提のみんなで一緒にガチ恋へ♪</p>
+          <p>ガチ恋を自覚させにくる、爆レス系ハッピーなデビュー曲<br>コール＆レスが大前提のみんなで一緒にガチ恋へ♪</p>
           <a href="https://youtu.be/Bv--0FY6x4I?si=a6NgKDyUzcz7zoSI" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
@@ -415,8 +471,7 @@
         <img class="song-thumb" src="https://img.youtube.com/vi/qeBn-UV_1gA/hqdefault.jpg" alt="ブランニュークエスト">
         <div class="song-content">
           <h3>ブランニュークエスト</h3>
-          <p>エモい全振りの「楽しかったな...」の余韻が強い曲<br>
-          ライブという名の物語を締めるのにぴったり</p>
+          <p>エモい全振りの「楽しかったな...」の余韻が強い曲<br>ライブという名の物語を締めるのにぴったり</p>
           <a href="https://youtu.be/qeBn-UV_1gA?si=2rf-6loySsfsRUk9" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
@@ -425,8 +480,7 @@
         <img class="song-thumb" src="https://img.youtube.com/vi/hDTvySKnvRA/hqdefault.jpg" alt="キミをパシャ♡">
         <div class="song-content">
           <h3>キミをパシャ♡</h3>
-          <p>ファンサ全開のレス祭り！！<br>
-          この曲のレスをもらうために最前で推しにパシャられたくなる</p>
+          <p>ファンサ全開のレス祭り！！<br>この曲のレスをもらうために最前で推しにパシャられたくなる</p>
           <a href="https://youtu.be/hDTvySKnvRA?si=Y-i7kXM6BPZQqY4q" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
@@ -435,8 +489,7 @@
         <img class="song-thumb" src="https://img.youtube.com/vi/vKEVin11uTU/hqdefault.jpg" alt="可愛さ∞レベルUP!">
         <div class="song-content">
           <h3>可愛さ∞レベルUP!</h3>
-          <p>入りのワンフレーズで超楽しくなるのに、<br>
-          ずっと可愛いが上がり続けてもう、沼！</p>
+          <p>入りのワンフレーズで超楽しくなるのに、<br>ずっと可愛いが上がり続けてもう、沼！</p>
           <a href="https://youtu.be/vKEVin11uTU?si=5FsgE08MBKu7MCfp" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
@@ -445,8 +498,7 @@
         <img class="song-thumb" src="https://img.youtube.com/vi/-68zlSUojj4/hqdefault.jpg" alt="タイムリープ">
         <div class="song-content">
           <h3>タイムリープ</h3>
-          <p>切なエモい物語曲<br>
-          時間を繰り返してでも想いを伝えたいことってあるよね。</p>
+          <p>切なエモい物語曲<br>時間を繰り返してでも想いを伝えたいことってあるよね。</p>
           <a href="https://youtu.be/-68zlSUojj4?si=owxbjLeC9r5PejcF" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
@@ -455,8 +507,7 @@
         <img class="song-thumb" src="https://img.youtube.com/vi/D15L9PtVQn8/hqdefault.jpg" alt="ヒロインフラグ宣言!">
         <div class="song-content">
           <h3>ヒロインフラグ宣言!</h3>
-          <p>可愛い曲に見えて、ダンスのキレが激しい曲<br>
-          歌詞も相まって推してよかった！ってなる主イチオシ曲</p>
+          <p>可愛い曲に見えて、ダンスのキレが激しい曲<br>歌詞も相まって推してよかった！ってなる主イチオシ曲</p>
           <a href="https://youtu.be/D15L9PtVQn8?si=WigVjcBa1ExbPIBM" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
@@ -465,12 +516,10 @@
         <img class="song-thumb" src="https://img.youtube.com/vi/KOhtZdVcRyI/hqdefault.jpg" alt="笑顔と本気と夢＝No.1!">
         <div class="song-content">
           <h3>笑顔と本気と夢＝No.1!</h3>
-          <p>応援したくなる理由が全部詰まってる応援曲<br>
-          コール・手振り・クラップ現場の一体感が強いよ！</p>
+          <p>応援したくなる理由が全部詰まってる応援曲<br>コール・手振り・クラップ現場の一体感が強いよ！</p>
           <a href="https://youtu.be/KOhtZdVcRyI?si=GbaeAYkR4rIr-TjY" target="_blank">▶ 動画を見る</a>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -516,6 +565,21 @@
 
   <div class="box" id="live">
     <h2>今後のライブ予定</h2>
+
+    <p>
+      Lv.♡Charmのライブ・イベント予定は、TimeTreeでまとめて確認できます📅<br>
+      最新情報を追いたい人はここからチェック！
+    </p>
+
+    <a class="timetree-button" href="https://timetr.ee/p/lvcharm" target="_blank">
+      📅 TimeTreeでライブ予定を見る
+    </a>
+
+    <p class="timetree-note">
+      ※TimeTreeをフォローすると、ライブやイベント予定をまとめて確認できます。
+    </p>
+
+    <h3>直近の注目予定</h3>
     <ul class="schedule-list">
       <li><strong>4/25</strong> WEGO × Lv.♡Charm コラボイベント　＠WEGO</li>
       <li><strong>5/2</strong> はらぺこサーカス2026　＠花博記念公園 鶴見緑地 大芝生</li>
