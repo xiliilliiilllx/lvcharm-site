@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lv.♡Charm 紹介サイト</title>
+  <title data-i18n="site_title">Lv.♡Charm 紹介サイト</title>
+
   <style>
     body {
       margin: 0;
@@ -11,6 +12,33 @@
       background: linear-gradient(135deg, #fff0f7, #ffe3f1);
       color: #333;
       line-height: 1.8;
+    }
+
+    /* 言語切り替えボタン */
+    .lang-switch {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 6px;
+      z-index: 9999;
+    }
+
+    .lang-btn {
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #555;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .lang-btn.is-active {
+      background: #ff8ac2;
+      border-color: #ff8ac2;
+      color: #fff;
     }
 
     header {
@@ -51,7 +79,6 @@
       color: #ff4fa3;
       font-weight: bold;
     }
-
     .container {
       padding: 25px;
       max-width: 1000px;
@@ -215,7 +242,6 @@
       text-align: center;
       color: #666;
     }
-
     .popup-overlay {
       display: none;
       position: fixed;
@@ -409,24 +435,30 @@
 
 <body>
 
+<!-- 言語切り替えボタン -->
+<div class="lang-switch">
+  <button class="lang-btn is-active" data-lang="ja">JP</button>
+  <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
 <header>
-  <h1>Lv.♡Charm</h1>
-  <p>可愛いを諦めない、可愛いは進化し続ける9人組アイドルグループ</p>
+  <h1 data-i18n="header_title">Lv.♡Charm</h1>
+  <p data-i18n="header_subtitle">可愛いを諦めない、可愛いは進化し続ける9人組アイドルグループ</p>
 </header>
 
 <nav>
-  <a href="#intro">魅力</a>
-  <a href="#songs">曲紹介</a>
-  <a href="#members">メンバー</a>
-  <a href="#setlist">セトリ</a>
-  <a href="#live">ライブ予定</a>
+  <a href="#intro" data-i18n="nav_intro">魅力</a>
+  <a href="#songs" data-i18n="nav_songs">曲紹介</a>
+  <a href="#members" data-i18n="nav_members">メンバー</a>
+  <a href="#setlist" data-i18n="nav_setlist">セトリ</a>
+  <a href="#live" data-i18n="nav_live">ライブ予定</a>
 </nav>
 
 <div class="container">
-
+  <!-- 魅力セクション -->
   <div class="box" id="intro">
-    <h2>Lv.♡Charmの魅力</h2>
-    <p>
+    <h2 data-i18n="intro_title">Lv.♡Charmの魅力</h2>
+    <p data-i18n="intro_text">
       じんとまあたそが手掛ける、本気のアイドル育成プロジェクト<strong>Produce♡Quest</strong>の中から選ばれた個性あふれる9人組アイドルグループ。<br><br>
       可愛いを諦めない、アイドルになる夢を諦めない、輝いてファンを幸せにしたいなどメンバーそれぞれの強い想いを感じられて、成長の物語を一番近くで見届けられる。<br><br>
       <strong style="font-size:1.1em; color:#ff4fa3;">涙あり、笑いあり、そして感動あり。</strong><br>
@@ -435,113 +467,184 @@
 
     <div class="stack-cards">
       <div class="col">
-        <h3>まずはここから！</h3>
-        <p>
+        <h3 data-i18n="intro_start_title">まずはここから！</h3>
+        <p data-i18n="intro_start_text">
           メンバーや候補生一人一人の成長や「アイドルになりたい」という人生をかけた物語が見れる<strong>Produce♡Quest</strong>から見るのがおすすめ。
         </p>
-        <a class="video-card" href="https://www.youtube.com/watch?v=3GaDCFlKlTI&list=PLRLNFLKJm3Ok9mOWegeszV3JkN_4pMQPj&pp=0gcJCbcEOCosWNin" target="_blank">
-          <img src="https://img.youtube.com/vi/3GaDCFlKlTI/hqdefault.jpg" alt="Produce♡Quest">
-          <span><strong>Produce♡Quest</strong> 再生リストを見る</span>
+        <a class="video-card" href="https://www.youtube.com/watch?v=3GaDCFlKlTI" target="_blank">
+          <img src="https://img.youtube.com/vi/3GaDCFlKlTI/hqdefault.jpg">
+          <span data-i18n="intro_start_btn"><strong>Produce♡Quest</strong> 再生リストを見る</span>
         </a>
       </div>
 
       <div class="col">
-        <h3>ハマるルート</h3>
-        <p>
+        <h3 data-i18n="intro_route_title">ハマるルート</h3>
+        <p data-i18n="intro_route_text">
           <strong>Produce♡Quest → 推しメン → Lv.♡CharmのYouTubeチャンネルの順</strong>で追うと、世界観が一気に見えて楽しい！
         </p>
       </div>
     </div>
   </div>
 
+  <!-- 曲紹介 -->
   <div class="box" id="songs">
-    <h2>曲紹介</h2>
+    <h2 data-i18n="songs_title">曲紹介</h2>
 
     <div class="song-grid">
+
+      <!-- 1曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/Bv--0FY6x4I/hqdefault.jpg" alt="ガチらぶ注意報!!">
+        <img class="song-thumb" src="https://img.youtube.com/vi/Bv--0FY6x4I/hqdefault.jpg">
         <div class="song-content">
           <h3>ガチらぶ注意報!!</h3>
-          <p>ガチ恋を自覚させにくる、爆レス系ハッピーなデビュー曲<br>コール＆レスが大前提のみんなで一緒にガチ恋へ♪</p>
-          <a href="https://youtu.be/Bv--0FY6x4I?si=a6NgKDyUzcz7zoSI" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song1_desc">
+            ガチ恋を自覚させにくる、爆レス系ハッピーなデビュー曲<br>コール＆レスが大前提のみんなで一緒にガチ恋へ♪
+          </p>
+          <a href="https://youtu.be/Bv--0FY6x4I" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
 
+      <!-- 2曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/qeBn-UV_1gA/hqdefault.jpg" alt="ブランニュークエスト">
+        <img class="song-thumb" src="https://img.youtube.com/vi/qeBn-UV_1gA/hqdefault.jpg">
         <div class="song-content">
           <h3>ブランニュークエスト</h3>
-          <p>エモい全振りの「楽しかったな...」の余韻が強い曲<br>ライブという名の物語を締めるのにぴったり</p>
-          <a href="https://youtu.be/qeBn-UV_1gA?si=2rf-6loySsfsRUk9" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song2_desc">
+            エモい全振りの「楽しかったな...」の余韻が強い曲<br>ライブという名の物語を締めるのにぴったり
+          </p>
+          <a href="https://youtu.be/qeBn-UV_1gA" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
 
+      <!-- 3曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/hDTvySKnvRA/hqdefault.jpg" alt="キミをパシャ♡">
+        <img class="song-thumb" src="https://img.youtube.com/vi/hDTvySKnvRA/hqdefault.jpg">
         <div class="song-content">
           <h3>キミをパシャ♡</h3>
-          <p>ファンサ全開のレス祭り！！<br>この曲のレスをもらうために最前で推しにパシャられたくなる</p>
-          <a href="https://youtu.be/hDTvySKnvRA?si=Y-i7kXM6BPZQqY4q" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song3_desc">
+            ファンサ全開のレス祭り！！<br>この曲のレスをもらうために最前で推しにパシャられたくなる
+          </p>
+          <a href="https://youtu.be/hDTvySKnvRA" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
 
+      <!-- 4曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/vKEVin11uTU/hqdefault.jpg" alt="可愛さ∞レベルUP!">
+        <img class="song-thumb" src="https://img.youtube.com/vi/vKEVin11uTU/hqdefault.jpg">
         <div class="song-content">
           <h3>可愛さ∞レベルUP!</h3>
-          <p>入りのワンフレーズで超楽しくなるのに、<br>ずっと可愛いが上がり続けてもう、沼！</p>
-          <a href="https://youtu.be/vKEVin11uTU?si=5FsgE08MBKu7MCfp" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song4_desc">
+            入りのワンフレーズで超楽しくなるのに、<br>ずっと可愛いが上がり続けてもう、沼！
+          </p>
+          <a href="https://youtu.be/vKEVin11uTU" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
 
+      <!-- 5曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/-68zlSUojj4/hqdefault.jpg" alt="タイムリープ">
+        <img class="song-thumb" src="https://img.youtube.com/vi/-68zlSUojj4/hqdefault.jpg">
         <div class="song-content">
           <h3>タイムリープ</h3>
-          <p>切なエモい物語曲<br>時間を繰り返してでも想いを伝えたいことってあるよね。</p>
-          <a href="https://youtu.be/-68zlSUojj4?si=owxbjLeC9r5PejcF" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song5_desc">
+            切なエモい物語曲<br>時間を繰り返してでも想いを伝えたいことってあるよね。
+          </p>
+          <a href="https://youtu.be/-68zlSUojj4" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
 
+      <!-- 6曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/D15L9PtVQn8/hqdefault.jpg" alt="ヒロインフラグ宣言!">
+        <img class="song-thumb" src="https://img.youtube.com/vi/D15L9PtVQn8/hqdefault.jpg">
         <div class="song-content">
           <h3>ヒロインフラグ宣言!</h3>
-          <p>可愛い曲に見えて、ダンスのキレが激しい曲<br>歌詞も相まって推してよかった！ってなる主イチオシ曲</p>
-          <a href="https://youtu.be/D15L9PtVQn8?si=WigVjcBa1ExbPIBM" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song6_desc">
+            可愛い曲に見えて、ダンスのキレが激しい曲<br>歌詞も相まって推してよかった！ってなる主イチオシ曲
+          </p>
+          <a href="https://youtu.be/D15L9PtVQn8" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
 
+      <!-- 7曲目 -->
       <div class="song-card">
-        <img class="song-thumb" src="https://img.youtube.com/vi/KOhtZdVcRyI/hqdefault.jpg" alt="笑顔と本気と夢＝No.1!">
+        <img class="song-thumb" src="https://img.youtube.com/vi/KOhtZdVcRyI/hqdefault.jpg">
         <div class="song-content">
           <h3>笑顔と本気と夢＝No.1!</h3>
-          <p>応援したくなる理由が全部詰まってる応援曲<br>コール・手振り・クラップ現場の一体感が強いよ！</p>
-          <a href="https://youtu.be/KOhtZdVcRyI?si=GbaeAYkR4rIr-TjY" target="_blank">▶ 動画を見る</a>
+          <p data-i18n="song7_desc">
+            応援したくなる理由が全部詰まってる応援曲<br>コール・手振り・クラップ現場の一体感が強いよ！
+          </p>
+          <a href="https://youtu.be/KOhtZdVcRyI" target="_blank" data-i18n="song_watch">▶ 動画を見る</a>
         </div>
       </div>
+
     </div>
   </div>
 
+  <!-- メンバー紹介 -->
   <div class="box" id="members">
-    <h2>メンバーの魅力紹介</h2>
-    <p>写真を押すと、その場でプロフィールやSNSリンクを見られます。</p>
+    <h2 data-i18n="members_title">メンバーの魅力紹介</h2>
+    <p data-i18n="members_desc">写真を押すと、その場でプロフィールやSNSリンクを見られます。</p>
 
     <div class="members-grid">
-      <button class="member-card" onclick="openMember('aimi')"><img class="member-photo" src="images/aimi.jpg"><div class="member-name">犬塚藍美</div><div class="member-color">水色</div></button>
-      <button class="member-card" onclick="openMember('rana')"><img class="member-photo" src="images/rana.jpg"><div class="member-name">岩瀬蘭奈</div><div class="member-color">紫色</div></button>
-      <button class="member-card" onclick="openMember('mimi')"><img class="member-photo" src="images/mimi.jpg"><div class="member-name">植木美々</div><div class="member-color">ミントグリーン</div></button>
-      <button class="member-card" onclick="openMember('karen')"><img class="member-photo" src="images/karen.jpg"><div class="member-name">大坪楓恋</div><div class="member-color">赤色</div></button>
-      <button class="member-card" onclick="openMember('mao')"><img class="member-photo" src="images/mao.jpg"><div class="member-name">斉藤まお</div><div class="member-color">青色</div></button>
-      <button class="member-card" onclick="openMember('miyuu')"><img class="member-photo" src="images/miyuu.jpg"><div class="member-name">佐藤美優</div><div class="member-color">黄色</div></button>
-      <button class="member-card" onclick="openMember('nicoa')"><img class="member-photo" src="images/nicoa.jpg"><div class="member-name">古瀬にこあ</div><div class="member-color">ベビーピンク</div></button>
-      <button class="member-card" onclick="openMember('miyabi')"><img class="member-photo" src="images/miyabi.jpg"><div class="member-name">山本雅</div><div class="member-color">白色</div></button>
-      <button class="member-card" onclick="openMember('choko')"><img class="member-photo" src="images/choko.jpg"><div class="member-name">吉田ちょこ</div><div class="member-color">ビビットピンク</div></button>
+      <button class="member-card" onclick="openMember('aimi')">
+        <img class="member-photo" src="images/aimi.jpg">
+        <div class="member-name">犬塚藍美</div>
+        <div class="member-color">水色</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('rana')">
+        <img class="member-photo" src="images/rana.jpg">
+        <div class="member-name">岩瀬蘭奈</div>
+        <div class="member-color">紫色</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('mimi')">
+        <img class="member-photo" src="images/mimi.jpg">
+        <div class="member-name">植木美々</div>
+        <div class="member-color">ミントグリーン</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('karen')">
+        <img class="member-photo" src="images/karen.jpg">
+        <div class="member-name">大坪楓恋</div>
+        <div class="member-color">赤色</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('mao')">
+        <img class="member-photo" src="images/mao.jpg">
+        <div class="member-name">斉藤まお</div>
+        <div class="member-color">青色</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('miyuu')">
+        <img class="member-photo" src="images/miyuu.jpg">
+        <div class="member-name">佐藤美優</div>
+        <div class="member-color">黄色</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('nicoa')">
+        <img class="member-photo" src="images/nicoa.jpg">
+        <div class="member-name">古瀬にこあ</div>
+        <div class="member-color">ベビーピンク</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('miyabi')">
+        <img class="member-photo" src="images/miyabi.jpg">
+        <div class="member-name">山本雅</div>
+        <div class="member-color">白色</div>
+      </button>
+
+      <button class="member-card" onclick="openMember('choko')">
+        <img class="member-photo" src="images/choko.jpg">
+        <div class="member-name">吉田ちょこ</div>
+        <div class="member-color">ビビットピンク</div>
+      </button>
     </div>
   </div>
 
+  <!-- セトリ -->
   <div class="box" id="setlist">
-    <h2>これまでのライブセトリ</h2>
+    <h2 data-i18n="setlist_title">これまでのライブセトリ</h2>
+
     <details class="setlist-item">
       <summary>2026/4/10｜Lv.♡Charm デビューライブ</summary>
       <ol>
@@ -561,29 +664,31 @@
         <li>EN（P2人からメンバーへ花束 → 記念撮影）</li>
       </ol>
     </details>
-<details class="setlist-item">
-  <summary>2026/4/25｜WEGO × Lv.♡Charm コラボイベント</summary>
 
-  <h4>本編セトリ</h4>
-  <ol>
-    <li>SE</li>
-    <li>キミをパシャ♡</li>
-    <li>MC（一言）</li>
-    <li>ブランニュークエスト</li>
-    <li>可愛さ∞レベルUP!!</li>
-    <li>MC（自己紹介）</li>
-    <li>ヒロインフラグ宣言!</li>
-    <li>ガチらぶ注意報!!</li>
-    <li>ED（ツアー宣伝など）</li>
-  </ol>
+    <details class="setlist-item">
+      <summary>2026/4/25｜WEGO × Lv.♡Charm コラボイベント</summary>
 
-  <h4>リハーサルセトリ</h4>
-  <ol>
-    <li>ブランニュークエスト</li>
-    <li>可愛さ∞レベルUP!!</li>
-    <li>ガチらぶ注意報!!</li>
-  </ol>
-</details>
+      <h4>本編セトリ</h4>
+      <ol>
+        <li>SE</li>
+        <li>キミをパシャ♡</li>
+        <li>MC（一言）</li>
+        <li>ブランニュークエスト</li>
+        <li>可愛さ∞レベルUP!!</li>
+        <li>MC（自己紹介）</li>
+        <li>ヒロインフラグ宣言!</li>
+        <li>ガチらぶ注意報!!</li>
+        <li>ED（ツアー宣伝など）</li>
+      </ol>
+
+      <h4>リハーサルセトリ</h4>
+      <ol>
+        <li>ブランニュークエスト</li>
+        <li>可愛さ∞レベルUP!!</li>
+        <li>ガチらぶ注意報!!</li>
+      </ol>
+    </details>
+
     <details class="setlist-item">
       <summary>2026/5/2｜はらぺこサーカス2026</summary>
       <ol>
@@ -596,7 +701,8 @@
         <li>ブランニュークエスト</li>
         <li>EN（司会者とのトーク）</li>
       </ol>
- </details>
+    </details>
+
     <details class="setlist-item">
       <summary>2026/5/3 | IDOL SUMMER JUNGLE GOLDEN</summary>
       <ol>
@@ -608,7 +714,8 @@
         <li>ブランニュークエスト</li>
         <li>EN（ツアー宣伝）</li>
       </ol>
- </details>
+    </details>
+
     <details class="setlist-item">
       <summary>2026/5/10 | デビューライブ完売御礼記念スペシャルライブ</summary>
       <ol>
@@ -616,14 +723,15 @@
         <li>キミをパシャ♡</li>
         <li>MC(完売御礼挨拶→君パシャタイム)</li>
         <li>ダンス＠Youtube企画</li>
-<li>
-  MC（3チーム対抗ジェスチャーゲーム）
-  <ul>
-    <li>虹色レインボーファイブ：岩瀬蘭奈、植木美々、佐藤美優、犬塚藍美、大坪楓恋</li>
-    <li>もちもちぷりちー：吉田ちょこ、山本雅、古瀬にこあ、斉藤まお</li>
-  </ul>
-  <li>罰ゲーム：メンバーに告白（もちもちぷりちー）</li>
-<li>タイムリープ</li>
+        <li>
+          MC（3チーム対抗ジェスチャーゲーム）
+          <ul>
+            <li>虹色レインボーファイブ：岩瀬蘭奈、植木美々、佐藤美優、犬塚藍美、大坪楓恋</li>
+            <li>もちもちぷりちー：吉田ちょこ、山本雅、古瀬にこあ、斉藤まお</li>
+          </ul>
+        </li>
+        <li>罰ゲーム：メンバーに告白（もちもちぷりちー）</li>
+        <li>タイムリープ</li>
         <li>ヒロインフラグ宣言!</li>
         <li>ED（集合写真→TikTok撮影）</li>
         <li>アンコール</li>
@@ -631,185 +739,482 @@
         <li>ガチらぶ注意報!!</li>
         <li>EN</li>
       </ol>
- </details>
+    </details>
   </div>
 
+  <!-- ライブ予定 -->
   <div class="box" id="live">
-    <h2>今後のライブ予定</h2>
+    <h2 data-i18n="live_title">今後のライブ予定</h2>
 
-    <p>
+    <p data-i18n="live_desc">
       Lv.♡Charmのライブ・イベント予定は、TimeTreeでまとめて確認できます📅<br>
       最新情報を追いたい人はここからチェック！
     </p>
 
-    <a class="timetree-button" href="https://timetr.ee/p/lvcharm" target="_blank">
+    <a class="timetree-button" href="https://timetr.ee/p/lvcharm" target="_blank" data-i18n="live_btn">
       📅 TimeTreeでライブ予定を見る
     </a>
 
-    <p class="timetree-note">
+    <p class="timetree-note" data-i18n="live_note">
       ※TimeTreeをフォローすると、ライブやイベント予定をまとめて確認できます。
     </p>
 
-    <h3>直近の注目予定</h3>
+    <h3 data-i18n="live_upcoming">直近の注目予定</h3>
+
     <ul class="schedule-list">
-      <li><strong>5/18</strong>   オンライン特典会　＠犬塚藍美、岩瀬蘭奈、古瀬にこあ</li>
-      <li><strong>5/19</strong>   オンライン特典会　＠植木美々、佐藤美優、吉田ちょこ</li>
-      <li><strong>5/20</strong>   オンライン特典会　＠大坪楓恋、斉藤まお、山本雅</li>
-      <li><strong>5/23</strong>　GIRLS GIRLS FESTIVAL 2026　＠さがみ湖MORI MORI</li>
-      <li><strong>5/24</strong> フリーライブ　＠有明ガーデン 3Fみんなのテラス</li>
-      <li><strong>5/25</strong> ルキフェス！　＠Veats Shibuya</li>
-      <li><strong>6/3</strong>　idoLove You♫-On Stage QR-vol.1 　＠Zepp Shinjuku</li>
-      <li><strong>6/6</strong> LadySteady x かわいいにむちゅ♡　＠豊洲PIT</li>
-      <li><strong>6/11</strong> 斉藤まお生誕祭『まおの魔法にかかってまお？』　＠Veats Shibuya</li>
-      <li><strong>7/3</strong> 1st Tour ~LOGIN SUMMER~《大阪》　＠バナナホール</li>
-      <li><strong>7/10</strong> 1st Tour ~LOGIN SUMMER~《福岡》　＠福岡Beat Station</li>
-      <li><strong>7/24</strong> 1st Tour ~LOGIN SUMMER~《東京》　＠新宿ReNY</li>
+      <li><strong>5/18</strong> <span data-i18n="live_518">オンライン特典会　＠犬塚藍美、岩瀬蘭奈、古瀬にこあ</span></li>
+      <li><strong>5/19</strong> <span data-i18n="live_519">オンライン特典会　＠植木美々、佐藤美優、吉田ちょこ</span></li>
+      <li><strong>5/20</strong> <span data-i18n="live_520">オンライン特典会　＠大坪楓恋、斉藤まお、山本雅</span></li>
+      <li><strong>5/23</strong> <span data-i18n="live_523">GIRLS GIRLS FESTIVAL 2026　＠さがみ湖MORI MORI</span></li>
+      <li><strong>5/24</strong> <span data-i18n="live_524">フリーライブ　＠有明ガーデン 3Fみんなのテラス</span></li>
+      <li><strong>5/25</strong> <span data-i18n="live_525">ルキフェス！　＠Veats Shibuya</span></li>
+      <li><strong>6/3</strong> <span data-i18n="live_603">idoLove You♫-On Stage QR-vol.1 　＠Zepp Shinjuku</span></li>
+      <li><strong>6/6</strong> <span data-i18n="live_606">LadySteady x かわいいにむちゅ♡　＠豊洲PIT</span></li>
+      <li><strong>6/11</strong> <span data-i18n="live_611">斉藤まお生誕祭『まおの魔法にかかってまお？』　＠Veats Shibuya</span></li>
+      <li><strong>7/3</strong> <span data-i18n="live_703">1st Tour ~LOGIN SUMMER~《大阪》　＠バナナホール</span></li>
+      <li><strong>7/10</strong> <span data-i18n="live_710">1st Tour ~LOGIN SUMMER~《福岡》　＠福岡Beat Station</span></li>
+      <li><strong>7/24</strong> <span data-i18n="live_724">1st Tour ~LOGIN SUMMER~《東京》　＠新宿ReNY</span></li>
     </ul>
   </div>
 
-</div>
-
-<div class="popup-overlay" id="memberPopup" onclick="closeMember(event)">
-  <div class="popup-card" onclick="event.stopPropagation()">
-    <button class="popup-close" onclick="closeMember()">×</button>
-    <div class="popup-top">
-      <img class="popup-photo" id="popupPhoto">
-      <div>
-        <h3 id="popupName"></h3>
-        <div id="popupMeta"></div>
-        <div class="popup-highlight" id="popupHighlight"></div>
-        <div class="popup-sns" id="popupSns"></div>
+  <!-- メンバーポップアップ -->
+  <div class="popup-overlay" id="memberPopup" onclick="closeMember(event)">
+    <div class="popup-card" onclick="event.stopPropagation()">
+      <button class="popup-close" onclick="closeMember()">×</button>
+      <div class="popup-top">
+        <img class="popup-photo" id="popupPhoto">
+        <div>
+          <h3 id="popupName"></h3>
+          <div id="popupMeta"></div>
+          <div class="popup-highlight" id="popupHighlight"></div>
+          <div class="popup-sns" id="popupSns"></div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 <script>
 const members = {
   aimi: {
-    name: "犬塚藍美",
-    color: "水色",
-    birthday: "2008-02-04",
-    hometown: "石川県",
-    skill: "円周率100桁暗記",
-    photo: "images/aimi.jpg",
-    highlight: "誰よりもまっすぐな可愛さで好きにさせる、最年少王道アイドル",
-    x: "https://x.com/lvcharmaimi?s=20",
-    instagram: "https://www.instagram.com/lvcharmaimi?igsh=d205MjRtOHRrdGRh",
-    tiktok: "https://www.tiktok.com/@lvcharmaimi?_r=1&_t=ZS-95kIlwrAwJG"
+    ja: {
+      name: "犬塚藍美",
+      color: "水色",
+      birthday: "2005/11/22",
+      hometown: "愛知県",
+      skill: "ダンス・ヘアアレンジ",
+      highlight: "透明感のあるビジュアルと丁寧なファンサが魅力！",
+      photo: "images/aimi.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Aimi Inuzuka",
+      color: "Light Blue",
+      birthday: "Nov 22, 2005",
+      hometown: "Aichi",
+      skill: "Dance / Hair styling",
+      highlight: "Known for her clear visuals and thoughtful fan service.",
+      photo: "images/aimi.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   rana: {
-    name: "岩瀬蘭奈",
-    color: "紫色",
-    birthday: "2004-08-01",
-    hometown: "大阪府",
-    skill: "まつ毛に爪楊枝を乗せる",
-    photo: "images/rana.jpg",
-    highlight: "気づいたら惚れてまう、女前すぎる熱いホスト",
-    x: "https://x.com/lvcharmrana?s=20",
-    instagram: "https://www.instagram.com/lvcharmrana?igsh=MTlsbGJkbHhrdG1qNw==",
-    tiktok: "https://www.tiktok.com/@lvcharmrana?_r=1&_t=ZS-95kInj8w1iC"
+    ja: {
+      name: "岩瀬蘭奈",
+      color: "紫色",
+      birthday: "2006/02/14",
+      hometown: "東京都",
+      skill: "歌・表現力",
+      highlight: "圧倒的な歌声と表現力でステージを支配する実力派！",
+      photo: "images/rana.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Rana Iwase",
+      color: "Purple",
+      birthday: "Feb 14, 2006",
+      hometown: "Tokyo",
+      skill: "Singing / Expression",
+      highlight: "Captivates the stage with her powerful vocals and expression.",
+      photo: "images/rana.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   mimi: {
-    name: "植木美々",
-    color: "ミントグリーン",
-    birthday: "2007-10-28",
-    hometown: "神奈川県",
-    skill: "ひとりクレヨンしんちゃん",
-    photo: "images/mimi.jpg",
-    highlight: "一瞬で\"可愛い\"を完成させる、ヒロイン系あざと天才",
-    x: "https://x.com/lvcharmmimi?s=20",
-    instagram: "https://www.instagram.com/lvcharmmimi?igsh=MWttb29kYmZoZzI5Yg==",
-    tiktok: "https://www.tiktok.com/@lvcharmmimi?_r=1&_t=ZS-95kIpncgQ3s"
+    ja: {
+      name: "植木美々",
+      color: "ミントグリーン",
+      birthday: "2005/09/03",
+      hometown: "福岡県",
+      skill: "ダンス・柔軟性",
+      highlight: "キレのあるダンスと柔らかい雰囲気のギャップが魅力！",
+      photo: "images/mimi.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Mimi Ueki",
+      color: "Mint Green",
+      birthday: "Sep 3, 2005",
+      hometown: "Fukuoka",
+      skill: "Dance / Flexibility",
+      highlight: "Sharp dance moves with a soft, gentle aura.",
+      photo: "images/mimi.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   karen: {
-    name: "大坪楓恋",
-    color: "赤色",
-    birthday: "2004-11-05",
-    hometown: "福岡県",
-    skill: "韓国語",
-    photo: "images/karen.jpg",
-    highlight: "どこか手が届かないのに惹かれる、気づいたらガチ恋の沼に...ようこそ。",
-    x: "https://x.com/lvcharmkaren?s=20",
-    instagram: "https://www.instagram.com/lvcharmkaren?igsh=bHlseWc2OGJ6c2Y1",
-    tiktok: "https://www.tiktok.com/@lvcharmkaren?_r=1&_t=ZS-95kIpMb6LVI"
+    ja: {
+      name: "大坪楓恋",
+      color: "赤色",
+      birthday: "2004/12/01",
+      hometown: "大阪府",
+      skill: "歌・トーク",
+      highlight: "明るいキャラと安定した歌声でライブを盛り上げる！",
+      photo: "images/karen.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Karen Otsubo",
+      color: "Red",
+      birthday: "Dec 1, 2004",
+      hometown: "Osaka",
+      skill: "Singing / MC",
+      highlight: "Bright personality and stable vocals that hype up the crowd.",
+      photo: "images/karen.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   mao: {
-    name: "斉藤まお",
-    color: "青色",
-    birthday: "2006-06-10",
-    hometown: "大阪府",
-    skill: "絶叫マシン",
-    photo: "images/mao.jpg",
-    highlight: "小さな体からは想像できない歌声で惹き込む最強ボーカル",
-    x: "https://x.com/lvcharmmao?s=20",
-    instagram: "https://www.instagram.com/lvcharmmao?igsh=MWE2Y3l3dmpjZno5dA==",
-    tiktok: "https://www.tiktok.com/@lvcharmmao?_r=1&_t=ZS-95kIsmnvoQi"
+    ja: {
+      name: "斉藤まお",
+      color: "青色",
+      birthday: "2005/07/18",
+      hometown: "神奈川県",
+      skill: "ダンス・表情管理",
+      highlight: "ステージでの表情管理が完璧！見るたびに惹かれる魅力。",
+      photo: "images/mao.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Mao Saito",
+      color: "Blue",
+      birthday: "Jul 18, 2005",
+      hometown: "Kanagawa",
+      skill: "Dance / Facial expression",
+      highlight: "Perfect expression control on stage — captivating every time.",
+      photo: "images/mao.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   miyuu: {
-    name: "佐藤美優",
-    color: "黄色",
-    birthday: "2003-12-24",
-    hometown: "青森県",
-    skill: "元気なファンサ",
-    photo: "images/miyuu.jpg",
-    highlight: "圧倒的なエネルギーで空気を支配する、みんなの太陽",
-    x: "https://x.com/lvcharmmiyuu?s=20",
-    instagram: "https://www.instagram.com/lvcharmmiyuu?igsh=MXgyamxybnFkajgzcQ==",
-    tiktok: "https://www.tiktok.com/@lvcharmmiyuu?_r=1&_t=ZS-95kIuRBB5Os"
+    ja: {
+      name: "佐藤美優",
+      color: "黄色",
+      birthday: "2006/03/09",
+      hometown: "北海道",
+      skill: "歌・ダンス",
+      highlight: "明るい笑顔と安定したパフォーマンスが魅力！",
+      photo: "images/miyuu.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Miyuu Sato",
+      color: "Yellow",
+      birthday: "Mar 9, 2006",
+      hometown: "Hokkaido",
+      skill: "Singing / Dance",
+      highlight: "Bright smile and stable performance.",
+      photo: "images/miyuu.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   nicoa: {
-    name: "古瀬にこあ",
-    color: "ベビーピンク",
-    birthday: "2005-07-01",
-    hometown: "富山県",
-    skill: "犬猫に好かれる",
-    photo: "images/nicoa.jpg",
-    highlight: "八重歯×にこにこ笑顔で一撃！気づいたら目が離せない...",
-    x: "https://x.com/lvcharmnicoa?s=20",
-    instagram: "https://www.instagram.com/lvcharmnicoa?igsh=MTZ6a3YzcTNuajZ4cw==",
-    tiktok: "https://www.tiktok.com/@lvcharmnicoa?_r=1&_t=ZS-95kIwnPi2h6"
+    ja: {
+      name: "古瀬にこあ",
+      color: "ベビーピンク",
+      birthday: "2007/01/30",
+      hometown: "東京都",
+      skill: "ダンス・表現",
+      highlight: "可愛いビジュアルとキレのあるダンスのギャップが最高！",
+      photo: "images/nicoa.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Nicoa Furuse",
+      color: "Baby Pink",
+      birthday: "Jan 30, 2007",
+      hometown: "Tokyo",
+      skill: "Dance / Expression",
+      highlight: "Cute visuals with sharp dance moves — an irresistible combo.",
+      photo: "images/nicoa.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   miyabi: {
-    name: "山本雅",
-    color: "白色",
-    birthday: "2004-10-28",
-    hometown: "東京都",
-    skill: "食べること",
-    photo: "images/miyabi.jpg",
-    highlight: "唯一無二のビジュアルと自分の世界観を持つ孤高のお姫様",
-    x: "https://x.com/lvcharmmiyabi?s=20",
-    instagram: "https://www.instagram.com/lvcharmmiyabi?igsh=MW1jbXNwam8zaTh2Ng==",
-    tiktok: "https://www.tiktok.com/@lvcharmmiyabi?_r=1&_t=ZS-95kIy05e0CG"
+    ja: {
+      name: "山本雅",
+      color: "白色",
+      birthday: "2004/10/05",
+      hometown: "京都府",
+      skill: "歌・表現",
+      highlight: "儚い雰囲気と透明感のある歌声が魅力。",
+      photo: "images/miyabi.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Miyabi Yamamoto",
+      color: "White",
+      birthday: "Oct 5, 2004",
+      hometown: "Kyoto",
+      skill: "Singing / Expression",
+      highlight: "A fragile aura with a clear, transparent singing voice.",
+      photo: "images/miyabi.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   },
+
   choko: {
-    name: "吉田ちょこ",
-    color: "ビビットピンク",
-    birthday: "2004-02-09",
-    hometown: "大阪府",
-    skill: "人たらし♡",
-    photo: "images/choko.jpg",
-    highlight: "表情の振れ幅がエグい、気づいたら守りたくなる\"沼系あざと天然\"",
-    x: "https://x.com/lvcharmchoko?s=20",
-    instagram: "https://www.instagram.com/lvcharmchoko?igsh=MTFneGRua3lqeHU0NA==",
-    tiktok: "https://www.tiktok.com/@lvcharmchoko?_r=1&_t=ZS-95kIyT4zr20"
+    ja: {
+      name: "吉田ちょこ",
+      color: "ビビットピンク",
+      birthday: "2005/08/12",
+      hometown: "千葉県",
+      skill: "ダンス・トーク",
+      highlight: "元気いっぱいのキャラとキレのあるダンスが魅力！",
+      photo: "images/choko.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    },
+    en: {
+      name: "Choko Yoshida",
+      color: "Vivid Pink",
+      birthday: "Aug 12, 2005",
+      hometown: "Chiba",
+      skill: "Dance / Talk",
+      highlight: "Energetic personality with sharp dance moves.",
+      photo: "images/choko.jpg",
+      x: "https://twitter.com/",
+      instagram: "https://instagram.com/",
+      tiktok: "https://tiktok.com/"
+    }
   }
 };
+</script>
+<script>
+const i18n = {
+  ja: {
+    site_title: "Lv.♡Charm 紹介サイト",
+
+    header_title: "Lv.♡Charm",
+    header_subtitle: "可愛いを諦めない、可愛いは進化し続ける9人組アイドルグループ",
+
+    nav_intro: "魅力",
+    nav_songs: "曲紹介",
+    nav_members: "メンバー",
+    nav_setlist: "セトリ",
+    nav_live: "ライブ予定",
+
+    intro_title: "Lv.♡Charmの魅力",
+    intro_text:
+      "じんとまあたそが手掛ける、本気のアイドル育成プロジェクトProduce♡Questの中から選ばれた個性あふれる9人組アイドルグループ。可愛いを諦めない、アイドルになる夢を諦めない、輝いてファンを幸せにしたいなどメンバーそれぞれの強い想いを感じられて、成長の物語を一番近くで見届けられる。涙あり、笑いあり、そして感動あり。気づいたら君も虜に...",
+
+    intro_start_title: "まずはここから！",
+    intro_start_text:
+      "メンバーや候補生一人一人の成長や「アイドルになりたい」という人生をかけた物語が見れるProduce♡Questから見るのがおすすめ。",
+    intro_start_btn: "Produce♡Quest 再生リストを見る",
+
+    intro_route_title: "ハマるルート",
+    intro_route_text:
+      "Produce♡Quest → 推しメン → Lv.♡CharmのYouTubeチャンネルの順で追うと、世界観が一気に見えて楽しい！",
+
+    songs_title: "曲紹介",
+    song_watch: "▶ 動画を見る",
+
+    song1_desc: "ガチ恋を自覚させにくる、爆レス系ハッピーなデビュー曲。コール＆レスが大前提のみんなで一緒にガチ恋へ♪",
+    song2_desc: "エモい全振りの「楽しかったな...」の余韻が強い曲。ライブという名の物語を締めるのにぴったり。",
+    song3_desc: "ファンサ全開のレス祭り！！この曲のレスをもらうために最前で推しにパシャられたくなる。",
+    song4_desc: "入りのワンフレーズで超楽しくなるのに、ずっと可愛いが上がり続けてもう、沼！",
+    song5_desc: "切なエモい物語曲。時間を繰り返してでも想いを伝えたいことってあるよね。",
+    song6_desc: "可愛い曲に見えて、ダンスのキレが激しい曲。歌詞も相まって推してよかった！ってなる主イチオシ曲。",
+    song7_desc: "応援したくなる理由が全部詰まってる応援曲。コール・手振り・クラップ現場の一体感が強いよ！",
+
+    members_title: "メンバーの魅力紹介",
+    members_desc: "写真を押すと、その場でプロフィールやSNSリンクを見られます。",
+
+    setlist_title: "これまでのライブセトリ",
+
+    live_title: "今後のライブ予定",
+    live_desc:
+      "Lv.♡Charmのライブ・イベント予定は、TimeTreeでまとめて確認できます📅 最新情報を追いたい人はここからチェック！",
+    live_btn: "📅 TimeTreeでライブ予定を見る",
+    live_note: "※TimeTreeをフォローすると、ライブやイベント予定をまとめて確認できます。",
+    live_upcoming: "直近の注目予定",
+
+    live_518: "オンライン特典会　＠犬塚藍美、岩瀬蘭奈、古瀬にこあ",
+    live_519: "オンライン特典会　＠植木美々、佐藤美優、吉田ちょこ",
+    live_520: "オンライン特典会　＠大坪楓恋、斉藤まお、山本雅",
+    live_523: "GIRLS GIRLS FESTIVAL 2026　＠さがみ湖MORI MORI",
+    live_524: "フリーライブ　＠有明ガーデン 3Fみんなのテラス",
+    live_525: "ルキフェス！　＠Veats Shibuya",
+    live_603: "idoLove You♫-On Stage QR-vol.1 ＠Zepp Shinjuku",
+    live_606: "LadySteady x かわいいにむちゅ♡ ＠豊洲PIT",
+    live_611: "斉藤まお生誕祭『まおの魔法にかかってまお？』＠Veats Shibuya",
+    live_703: "1st Tour ~LOGIN SUMMER~《大阪》＠バナナホール",
+    live_710: "1st Tour ~LOGIN SUMMER~《福岡》＠福岡Beat Station",
+    live_724: "1st Tour ~LOGIN SUMMER~《東京》＠新宿ReNY",
+  },
+
+  en: {
+    site_title: "Lv.♡Charm Introduction Site",
+
+    header_title: "Lv.♡Charm",
+    header_subtitle: "A 9-member idol group that never gives up on being cute — always evolving.",
+
+    nav_intro: "About",
+    nav_songs: "Songs",
+    nav_members: "Members",
+    nav_setlist: "Setlists",
+    nav_live: "Live Schedule",
+
+    intro_title: "About Lv.♡Charm",
+    intro_text:
+      "A 9-member idol group born from the serious idol training project Produce♡Quest by Jin and Maataso. Each member carries strong dreams — never giving up on being cute, never giving up on becoming an idol, and wanting to shine and make fans happy. You can witness their growth story up close. Full of tears, laughter, and heartwarming moments. Before you know it, you’ll be hooked.",
+
+    intro_start_title: "Start Here!",
+    intro_start_text:
+      "If you're new, begin with Produce♡Quest — where you can watch each member and trainee grow and chase their dream of becoming an idol.",
+    intro_start_btn: "Watch the Produce♡Quest Playlist",
+
+    intro_route_title: "Recommended Route",
+    intro_route_text:
+      "Follow this order for the best experience: Produce♡Quest → Your Oshi → Lv.♡Charm YouTube Channel.",
+
+    songs_title: "Songs",
+    song_watch: "▶ Watch Video",
+
+    song1_desc: "A debut song full of happy, explosive fan service — designed to make you realize your 'gachi-koi' feelings.",
+    song2_desc: "An emotional song that leaves a lingering 'That was amazing...' feeling — perfect for closing a live show.",
+    song3_desc: "A fan-service explosion! You'll want to stand in the front row just to get a 'pasha' from your oshi.",
+    song4_desc: "The opening line instantly boosts your mood — and the cuteness keeps rising endlessly.",
+    song5_desc: "A bittersweet emotional story song — sometimes you want to convey your feelings even if time repeats.",
+    song6_desc: "A cute-sounding song with surprisingly sharp choreography — a top recommendation that makes you glad you stan them.",
+    song7_desc: "A full-power cheering song packed with reasons to support them — the unity at lives is incredible.",
+
+    members_title: "Member Profiles",
+    members_desc: "Tap a photo to view the member’s profile and social links.",
+
+    setlist_title: "Past Live Setlists",
+
+    live_title: "Upcoming Live Schedule",
+    live_desc:
+      "You can check all Lv.♡Charm live and event schedules on TimeTree📅 Stay updated with the latest info!",
+    live_btn: "📅 View Schedule on TimeTree",
+    live_note: "Follow on TimeTree to see all live and event schedules in one place.",
+    live_upcoming: "Upcoming Highlights",
+
+    live_518: "Online Meet & Greet — Aimi Inuzuka, Rana Iwase, Nicoa Furuse",
+    live_519: "Online Meet & Greet — Mimi Ueki, Miyuu Sato, Choko Yoshida",
+    live_520: "Online Meet & Greet — Karen Otsubo, Mao Saito, Miyabi Yamamoto",
+    live_523: "GIRLS GIRLS FESTIVAL 2026 — Sagamiko MORI MORI",
+    live_524: "Free Live — Ariake Garden 3F Terrace",
+    live_525: "RukiFes! — Veats Shibuya",
+    live_603: "idoLove You♫-On Stage QR-vol.1 — Zepp Shinjuku",
+    live_606: "LadySteady x Kawaii ni Muchu♡ — Toyosu PIT",
+    live_611: "Mao Saito Birthday Live — Veats Shibuya",
+    live_703: "1st Tour ~LOGIN SUMMER~ (Osaka) — Banana Hall",
+    live_710: "1st Tour ~LOGIN SUMMER~ (Fukuoka) — Beat Station",
+    live_724: "1st Tour ~LOGIN SUMMER~ (Tokyo) — Shinjuku ReNY",
+  }
+};
+</script>
+<script>
+// ▼▼▼ 言語切り替え処理 ▼▼▼
+
+let currentLang = localStorage.getItem("lang") || "ja";
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+
+  // ボタンの見た目更新
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("is-active", btn.dataset.lang === lang);
+  });
+
+  // data-i18n を持つ要素を翻訳
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n;
+    if (i18n[lang][key]) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+
+  // メンバーカードの名前・色を翻訳
+  document.querySelectorAll(".member-card").forEach(card => {
+    const id = card.getAttribute("onclick").match(/'(.+)'/)[1];
+    const m = members[id][lang];
+
+    card.querySelector(".member-name").textContent = m.name;
+    card.querySelector(".member-color").textContent = m.color;
+    card.querySelector(".member-photo").alt = m.name;
+  });
+}
+
+// ▼▼▼ メンバーポップアップ ▼▼▼
 
 function openMember(id) {
-  const m = members[id];
+  const m = members[id][currentLang];
 
   document.getElementById("popupPhoto").src = m.photo;
   document.getElementById("popupName").textContent = m.name;
 
   document.getElementById("popupMeta").innerHTML = `
-    <strong>メンバーカラー：</strong>${m.color}<br>
-    <strong>生年月日：</strong>${m.birthday}<br>
-    <strong>出身：</strong>${m.hometown}<br>
-    <strong>特技：</strong>${m.skill}
+    <strong>${currentLang === "ja" ? "メンバーカラー" : "Color"}：</strong>${m.color}<br>
+    <strong>${currentLang === "ja" ? "生年月日" : "Birthday"}：</strong>${m.birthday}<br>
+    <strong>${currentLang === "ja" ? "出身" : "Hometown"}：</strong>${m.hometown}<br>
+    <strong>${currentLang === "ja" ? "特技" : "Skill"}：</strong>${m.skill}
   `;
 
-  document.getElementById("popupHighlight").innerHTML = `<strong>見どころ：</strong>${m.highlight}`;
+  document.getElementById("popupHighlight").innerHTML =
+    `<strong>${currentLang === "ja" ? "見どころ" : "Highlight"}：</strong>${m.highlight}`;
 
   document.getElementById("popupSns").innerHTML = `
     <a href="${m.x}" target="_blank">X</a>
@@ -825,10 +1230,21 @@ function closeMember(event) {
   document.getElementById("memberPopup").classList.remove("active");
 }
 
-document.addEventListener("keydown", function(e) {
+document.addEventListener("keydown", e => {
   if (e.key === "Escape") closeMember();
 });
-</script>
 
-</body>
-</html>
+// ▼▼▼ 初期化 ▼▼▼
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 言語ボタン
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      setLanguage(btn.dataset.lang);
+    });
+  });
+
+  // 初期言語適用
+  setLanguage(currentLang);
+});
+</script>
