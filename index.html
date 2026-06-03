@@ -430,6 +430,30 @@
         grid-template-columns: 1fr;
       }
     }
+    .site-footer {
+      margin-top: 60px;
+      padding: 25px 0;
+      text-align: center;
+      background: #fff5fa;
+      border-top: 2px solid #ffd1e8;
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .site-footer .footer-inner p {
+      margin: 4px 0;
+    }
+    
+    .footer-x {
+      color: #ff66a5;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    
+    .footer-x:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 
@@ -848,7 +872,7 @@
 
     <ul class="schedule-list">
       <li><strong>6/6</strong> <span data-i18n="live_606">LadySteady x かわいいにむちゅ♡　＠豊洲PIT</span></li>
-      <li><strong>6/7</strong> <span data-i18n="live_603">斉藤まお　生誕記念オンライン特典会＠Youtube</span></li>
+      <li><strong>6/7</strong> <span data-i18n="live_607">斉藤まお　生誕記念オンライン特典会＠Youtube</span></li>
       <li><strong>6/11</strong> <span data-i18n="live_618">斉藤まお生誕祭『まおの魔法にかかってまお？』　＠Veats Shibuya</span></li>
       <li><strong>6/18</strong> <span data-i18n="live_611">アイドルアラモード Vol.31　＠Zepp Shinjuku</span></li>
       <li><strong>6/27</strong> <span data-i18n="live_627">Sweet × Sweet × Sweet vol.6　＠渋谷音楽堂</span></li>
@@ -1184,6 +1208,10 @@ const i18n = {
     live_710: "1st Tour ~LOGIN SUMMER~《福岡》＠福岡Beat Station",
     live_722: "UTAGE FES Vol.5　＠Zepp Shinjuku 他",
     live_724: "1st Tour ~LOGIN SUMMER~《東京》＠新宿ReNY",
+
+    footer_updated: "最終更新日：2026/06/04",
+    footer_creator: "制作：きいち",
+
   },
 
   en: {
@@ -1244,6 +1272,10 @@ const i18n = {
     live_710: "1st Tour ~LOGIN SUMMER~ (Fukuoka) — Beat Station",
     live_722: "UTAGE FES Vol.5 — Zepp Shinjuku etc.",
     live_724: "1st Tour ~LOGIN SUMMER~ (Tokyo) — Shinjuku ReNY",
+
+    footer_updated: "Last Updated: 2026/06/04",
+    footer_creator: "Created by Kiichi",
+
   }
 };
 </script>
@@ -1330,3 +1362,20 @@ document.addEventListener("DOMContentLoaded", () => {
   setLanguage(currentLang);
 });
 </script>
+
+<!-- ★★★ フッターはここに入れる ★★★ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-updated" data-i18n="footer_updated">最終更新日：2026/06/04</p>
+    <p class="footer-creator" data-i18n="footer_creator">制作：きいち</p>
+    <p>
+      <a href="https://x.com/lvcharmkiichi" target="_blank" class="footer-x">
+        🩷 X（@lvcharmkiichi）
+      </a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
